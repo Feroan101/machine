@@ -1,4 +1,4 @@
-name: Release
+name: Machine Release
 
 on:
   push:
@@ -6,8 +6,8 @@ on:
       - 'v*'
 
 jobs:
-  build:
-    name: Build - ${{ matrix.target }}
+  build-and-upload:
+    name: Build and Upload - ${{ matrix.target }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -16,10 +16,10 @@ jobs:
           - aarch64-unknown-linux-musl
     
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install Rust
+      - name: Install Rust toolchain
         uses: dtolnay/rust-toolchain@stable
         with:
           targets: ${{ matrix.target }}
@@ -27,37 +27,18 @@ jobs:
       - name: Install Cross
         run: cargo install cross --git https://github.com/cross-rs/cross
 
-      - name: Build
+      - name: Build release binary
         run: cross build --release --target ${{ matrix.target }}
 
-      - name: Package
+      - name: Package binary
         run: |
           cd target/${{ matrix.target }}/release
           tar -czf ../../../machine-${{ matrix.target }}.tar.gz machine
           cd ../../../
 
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: machine-${{ matrix.target }}
-          path: machine-${{ matrix.target }}.tar.gz
-
-  release:
-    name: Create Release
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download Artifacts
-        uses: actions/download-artifact@v4
-        with:
-          pattern: machine-*
-          merge-multiple: true
-
-      - name: Create Release
+      - name: Upload Release Asset
         uses: softprops/action-gh-release@v1
         with:
-          files: |
-            machine-x86_64-unknown-linux-musl.tar.gz
-            machine-aarch64-unknown-linux-musl.tar.gz
+          files: machine-${{ matrix.target }}.tar.gz
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -2,7 +2,7 @@
 
 [![License](https://img.shields.io/github/license/Feroan101/machine)](https://github.com/Feroan101/machine/blob/main/LICENSE)
 [![Latest Release](https://img.shields.io/github/v/release/Feroan101/machine)](https://github.com/Feroan101/machine/releases)
-[![Build Status](https://img.shields.io/github/actions/workflow/status/Feroan101/machine/ci.yml)](https://github.com/Feroan101/machine/actions)
+[![Build Status](https://github.com/Feroan101/machine/actions/workflows/build.yml/badge.svg)](https://github.com/Feroan101/machine/actions)
 
 **Linux diagnostics that explain what's happening and why.**
 
