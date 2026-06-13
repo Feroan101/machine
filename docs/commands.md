@@ -9,6 +9,14 @@ High-level summary of system resources and health.
 - **Flags**: `--json`, `--verbose`
 - **Example**: `machine status --verbose`
 
+### pulse
+Compact system health snapshot.
+- **Example**: `machine pulse`
+
+### watch
+Live system monitoring view with interpreted output.
+- **Example**: `machine watch`
+
 ### wtf
 Automatic diagnosis of likely system problems.
 - **Flags**: `--json`, `--verbose`
@@ -17,6 +25,11 @@ Automatic diagnosis of likely system problems.
 ### doctor
 Heuristic-based health scoring and repair recommendations.
 - **Example**: `machine doctor`
+
+### why
+Explains what a process is doing and why it exists.
+- **Arguments**: `<process>` (PID or process name)
+- **Example**: `machine why firefox`
 
 ## Process Analysis
 

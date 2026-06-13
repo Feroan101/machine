@@ -23,6 +23,13 @@ enum Commands {
     Status,
     /// Diagnose likely system problems
     Wtf,
+    /// Explain what a process is doing and why it exists
+    Why {
+        /// Process name or PID
+        target: String,
+    },
+    /// Show high-level system health snapshot
+    Pulse,
     /// Explain a specific process or PID
     Explain {
         /// Process name or PID
@@ -108,6 +115,8 @@ async fn main() -> anyhow::Result<()> {
     match cli.command {
         Commands::Status => commands::status::run(cli.json, cli.verbose).await?,
         Commands::Wtf => commands::wtf::run(cli.json, cli.verbose).await?,
+        Commands::Why { target } => commands::why::run(target, cli.json).await?,
+        Commands::Pulse => commands::pulse::run().await?,
         Commands::Explain { target } => commands::explain::run(target, cli.json, cli.verbose).await?,
         Commands::Trace { target } => commands::trace::run(target, cli.json, cli.verbose).await?,
         Commands::Watch => commands::watch::run().await?,

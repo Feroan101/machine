@@ -24,4 +24,6 @@ pub mod latency;
 pub mod battery;
 pub mod thermal;
 pub mod report;
+pub mod pulse;
+pub mod why;
 

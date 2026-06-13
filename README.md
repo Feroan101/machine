@@ -36,11 +36,17 @@ machine status
 # Identify system bottlenecks
 machine wtf
 
+# Live system monitoring
+machine watch
+
+# Compact health snapshot
+machine pulse
+
+# Explain a specific process
+machine why <process>
+
 # Capture a snapshot for history
 machine snapshot
-
-# Generate a diagnostic report
-machine report
 ```
 
 ## Screenshots
