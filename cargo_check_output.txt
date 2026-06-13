@@ -1,0 +1,405 @@
+   Compiling ring v0.17.14
+   Compiling icu_properties v2.2.0
+   Compiling zerocopy v0.8.52
+   Compiling serde_core v1.0.228
+   Compiling bytes v1.11.1
+   Compiling nom v7.1.3
+   Compiling form_urlencoded v1.2.2
+   Compiling futures-util v0.3.32
+   Compiling tokio v1.52.3
+   Compiling idna_adapter v1.2.2
+   Compiling idna v1.1.0
+   Compiling rustls-webpki v0.101.7
+   Compiling sct v0.7.1
+    Checking icu_normalizer v2.2.0
+   Compiling parking_lot v0.12.5
+   Compiling digest v0.10.7
+    Checking tracing-core v0.1.36
+   Compiling num-traits v0.2.19
+   Compiling serde v1.0.228
+   Compiling zmij v1.0.21
+    Checking getrandom v0.3.4
+    Checking hashbrown v0.17.1
+    Checking itoa v1.0.18
+   Compiling base64 v0.21.7
+   Compiling equivalent v1.0.2
+   Compiling unicode_categories v0.1.1
+   Compiling crc-catalog v2.5.0
+   Compiling cpufeatures v0.2.17
+   Compiling sha2 v0.10.9
+   Compiling sqlformat v0.2.6
+   Compiling rustls-pemfile v1.0.4
+    Checking indexmap v2.14.0
+   Compiling crc v3.4.0
+   Compiling tracing v0.1.44
+   Compiling serde_json v1.0.150
+   Compiling ahash v0.8.12
+   Compiling hashbrown v0.14.5
+   Compiling either v1.16.0
+   Compiling atoi v2.0.0
+   Compiling futures-intrusive v0.5.0
+   Compiling crossbeam-queue v0.3.12
+   Compiling rustls v0.21.12
+   Compiling tokio-stream v0.1.18
+   Compiling hashlink v0.8.4
+   Compiling url v2.5.8
+    Checking block-buffer v0.10.4
+    Checking crypto-common v0.1.7
+   Compiling futures-channel v0.3.32
+   Compiling thiserror v1.0.69
+   Compiling spin v0.9.8
+    Checking socket2 v0.6.4
+    Checking mio v1.2.1
+   Compiling webpki-roots v0.25.4
+   Compiling event-listener v2.5.3
+   Compiling byteorder v1.5.0
+    Checking slab v0.4.12
+    Checking futures-task v0.3.32
+   Compiling hex v0.4.3
+    Checking minimal-lexical v0.2.1
+    Checking futures-io v0.3.32
+    Checking percent-encoding v2.3.2
+   Compiling flume v0.11.1
+   Compiling sqlx-core v0.7.4
+   Compiling getrandom v0.4.2
+   Compiling futures-executor v0.3.32
+   Compiling libsqlite3-sys v0.27.0
+    Checking crossbeam-epoch v0.9.18
+    Checking mio v0.8.11
+    Checking utf8parse v0.2.2
+   Compiling urlencoding v2.1.3
+   Compiling unicode-segmentation v1.13.3
+   Compiling tempfile v3.27.0
+   Compiling heck v0.4.1
+    Checking anstyle-parse v1.0.0
+    Checking crossbeam-deque v0.8.6
+    Checking signal-hook v0.3.18
+   Compiling sqlx-sqlite v0.7.4
+    Checking is_terminal_polyfill v1.70.2
+    Checking foldhash v0.1.5
+    Checking anstyle v1.0.14
+    Checking lazy_static v1.5.0
+    Checking anstyle-query v1.1.5
+    Checking colorchoice v1.0.5
+    Checking anstream v1.0.0
+    Checking hashbrown v0.15.5
+    Checking signal-hook-mio v0.2.5
+    Checking rayon-core v1.13.0
+    Checking castaway v0.2.4
+    Checking itertools v0.13.0
+    Checking toml_datetime v0.6.11
+    Checking serde_spanned v0.6.9
+    Checking inotify-sys v0.1.5
+    Checking ryu v1.0.23
+    Checking unicode-width v0.1.14
+    Checking static_assertions v1.1.0
+    Checking strsim v0.11.1
+    Checking bitflags v1.3.2
+    Checking clap_lex v1.1.0
+    Checking bitflags v2.13.0
+    Checking winnow v0.7.15
+    Checking toml_write v0.1.2
+    Checking same-file v1.0.6
+    Checking clap_builder v4.6.0
+    Checking crossterm v0.27.0
+    Checking walkdir v2.5.0
+    Checking inotify v0.9.6
+    Checking compact_str v0.7.1
+   Compiling sqlx-macros-core v0.7.4
+    Checking rayon v1.12.0
+    Checking unicode-truncate v1.1.0
+    Checking lru v0.12.5
+    Checking strum v0.26.3
+    Checking sharded-slab v0.1.7
+    Checking tracing-log v0.2.0
+    Checking itertools v0.12.1
+    Checking crossbeam-channel v0.5.15
+    Checking toml_edit v0.22.27
+    Checking filetime v0.2.29
+    Checking thread_local v1.1.9
+    Checking iana-time-zone v0.1.65
+    Checking nu-ansi-term v0.50.3
+    Checking cassowary v0.3.0
+    Checking tracing-subscriber v0.3.23
+    Checking chrono v0.4.45
+    Checking notify v6.1.1
+    Checking ratatui v0.26.3
+    Checking clap v4.6.1
+    Checking sysinfo v0.30.13
+    Checking anyhow v1.0.102
+   Compiling sqlx-macros v0.7.4
+    Checking colored v2.2.0
+    Checking toml v0.8.23
+    Checking sqlx v0.7.4
+    Checking machine v0.1.0 (/home/feroan/Projects/theMachine/machine)
+error[E0583]: file not found for module `network`
+ --> src/core/mod.rs:4:1
+  |
+4 | pub mod network;
+  | ^^^^^^^^^^^^^^^^
+  |
+  = help: to create the module `network`, create file "src/core/network.rs" or "src/core/network/mod.rs"
+  = note: if there is a `mod network` elsewhere in the crate already, import it with `use crate::...` instead
+
+error[E0583]: file not found for module `history`
+ --> src/core/mod.rs:5:1
+  |
+5 | pub mod history;
+  | ^^^^^^^^^^^^^^^^
+  |
+  = help: to create the module `history`, create file "src/core/history.rs" or "src/core/history/mod.rs"
+  = note: if there is a `mod history` elsewhere in the crate already, import it with `use crate::...` instead
+
+error[E0583]: file not found for module `tables`
+ --> src/ui/mod.rs:1:1
+  |
+1 | pub mod tables;
+  | ^^^^^^^^^^^^^^^
+  |
+  = help: to create the module `tables`, create file "src/ui/tables.rs" or "src/ui/tables/mod.rs"
+  = note: if there is a `mod tables` elsewhere in the crate already, import it with `use crate::...` instead
+
+error[E0583]: file not found for module `db`
+ --> src/storage/mod.rs:1:1
+  |
+1 | pub mod db;
+  | ^^^^^^^^^^^
+  |
+  = help: to create the module `db`, create file "src/storage/db.rs" or "src/storage/db/mod.rs"
+  = note: if there is a `mod db` elsewhere in the crate already, import it with `use crate::...` instead
+
+error[E0252]: the name `Result` is defined multiple times
+ --> src/commands/status.rs:3:5
+  |
+1 | use anyhow::Result;
+  |     -------------- previous import of the type `Result` here
+2 |
+3 | use anyhow::Result;
+  |     ^^^^^^^^^^^^^^ `Result` reimported here
+  |
+  = note: `Result` must be defined only once in the type namespace of this module
+
+error[E0252]: the name `Result` is defined multiple times
+ --> src/commands/wtf.rs:3:5
+  |
+1 | use anyhow::Result;
+  |     -------------- previous import of the type `Result` here
+2 |
+3 | use anyhow::Result;
+  |     ^^^^^^^^^^^^^^ `Result` reimported here
+  |
+  = note: `Result` must be defined only once in the type namespace of this module
+
+error[E0252]: the name `Result` is defined multiple times
+ --> src/commands/explain.rs:3:5
+  |
+1 | use anyhow::Result;
+  |     -------------- previous import of the type `Result` here
+2 |
+3 | use anyhow::Result;
+  |     ^^^^^^^^^^^^^^ `Result` reimported here
+  |
+  = note: `Result` must be defined only once in the type namespace of this module
+
+error[E0252]: the name `Result` is defined multiple times
+ --> src/commands/trace.rs:3:5
+  |
+1 | use anyhow::Result;
+  |     -------------- previous import of the type `Result` here
+2 |
+3 | use anyhow::Result;
+  |     ^^^^^^^^^^^^^^ `Result` reimported here
+  |
+  = note: `Result` must be defined only once in the type namespace of this module
+
+error[E0432]: unresolved import `crate::ProcessCommands`
+ --> src/commands/process.rs:2:5
+  |
+2 | use crate::ProcessCommands;
+  |     ^^^^^^^^^^^^^^^^^^^^^^ no `ProcessCommands` in the root
+
+error[E0432]: unresolved imports `sysinfo::SystemExt`, `sysinfo::CpuExt`, `sysinfo::ProcessExt`
+ --> src/core/analysis.rs:1:23
+  |
+1 | ...ystem, SystemExt, CpuExt, ProcessExt};
+  |           ^^^^^^^^^  ^^^^^^  ^^^^^^^^^^ no `ProcessExt` in the root
+  |           |          |
+  |           |          no `CpuExt` in the root
+  |           no `SystemExt` in the root
+  |
+help: a similar name exists in the module
+  |
+1 - use sysinfo::{System, SystemExt, CpuExt, ProcessExt};
+1 + use sysinfo::{System, System, CpuExt, ProcessExt};
+  |
+help: a similar name exists in the module
+  |
+1 - use sysinfo::{System, SystemExt, CpuExt, ProcessExt};
+1 + use sysinfo::{System, SystemExt, CpuExt, Process};
+  |
+
+error[E0432]: unresolved imports `sysinfo::SystemExt`, `sysinfo::ProcessExt`
+ --> src/core/proc.rs:1:23
+  |
+1 | use sysinfo::{System, SystemExt, ProcessExt};
+  |                       ^^^^^^^^^  ^^^^^^^^^^ no `ProcessExt` in the root
+  |                       |
+  |                       no `SystemExt` in the root
+  |
+help: a similar name exists in the module
+  |
+1 - use sysinfo::{System, SystemExt, ProcessExt};
+1 + use sysinfo::{System, System, ProcessExt};
+  |
+help: a similar name exists in the module
+  |
+1 - use sysinfo::{System, SystemExt, ProcessExt};
+1 + use sysinfo::{System, SystemExt, Process};
+  |
+
+error[E0432]: unresolved import `crate::core::analysis::Analyzer`
+ --> src/commands/status.rs:4:5
+  |
+4 | use crate::core::analysis::Analyzer;
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ no `Analyzer` in `core::analysis`
+
+error[E0432]: unresolved import `crate::core::analysis::Analyzer`
+ --> src/commands/wtf.rs:4:5
+  |
+4 | use crate::core::analysis::Analyzer;
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ no `Analyzer` in `core::analysis`
+
+error[E0432]: unresolved import `crate::core::analysis::Analyzer`
+ --> src/commands/explain.rs:4:5
+  |
+4 | use crate::core::analysis::Analyzer;
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ no `Analyzer` in `core::analysis`
+
+error[E0432]: unresolved import `crate::core::analysis::Analyzer`
+ --> src/commands/trace.rs:4:5
+  |
+4 | use crate::core::analysis::Analyzer;
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ no `Analyzer` in `core::analysis`
+
+error[E0432]: unresolved import `crate::core::analysis::Analyzer`
+ --> src/commands/investigate.rs:2:5
+  |
+2 | use crate::core::analysis::Analyzer;
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ no `Analyzer` in `core::analysis`
+
+error[E0432]: unresolved import `crate::core::analysis::Analyzer`
+ --> src/commands/doctor.rs:2:5
+  |
+2 | use crate::core::analysis::Analyzer;
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ no `Analyzer` in `core::analysis`
+
+error[E0425]: cannot find function `get_top_processes` in module `proc`
+  --> src/commands/status.rs:39:27
+   |
+39 | ...oc::get_top_processes(&analyzer.sys, if verbo...
+   |        ^^^^^^^^^^^^^^^^^ not found in `proc`
+
+error[E0425]: cannot find function `get_child_processes` in module `proc`
+  --> src/commands/explain.rs:40:30
+   |
+40 | ...c::get_child_processes(&analyzer.sys, p.pid);
+   |       ^^^^^^^^^^^^^^^^^^^ not found in `proc`
+
+error[E0425]: cannot find type `Analyzer` in this scope
+  --> src/core/analysis.rs:17:6
+   |
+17 | impl Analyzer {
+   |      ^^^^^^^^ not found in this scope
+
+warning: unused import: `anyhow::Result`
+ --> src/commands/status.rs:3:5
+  |
+3 | use anyhow::Result;
+  |     ^^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused import: `anyhow::Result`
+ --> src/commands/wtf.rs:3:5
+  |
+3 | use anyhow::Result;
+  |     ^^^^^^^^^^^^^^
+
+warning: unused import: `anyhow::Result`
+ --> src/commands/explain.rs:3:5
+  |
+3 | use anyhow::Result;
+  |     ^^^^^^^^^^^^^^
+
+warning: unused import: `anyhow::Result`
+ --> src/commands/trace.rs:3:5
+  |
+3 | use anyhow::Result;
+  |     ^^^^^^^^^^^^^^
+
+warning: unused import: `Severity`
+ --> src/commands/investigate.rs:3:42
+  |
+3 | use crate::core::recommendations::{self, Severity};
+  |                                          ^^^^^^^^
+
+error[E0119]: conflicting implementations of trait `Debug` for type `SystemSnapshot`
+ --> src/core/analysis.rs:5:10
+  |
+4 | #[derive(Debug, Serialize)]
+  |          ----- first implementation here
+5 | #[derive(Debug, Serialize)]
+  |          ^^^^^ conflicting implementation for `SystemSnapshot`
+
+error[E0119]: conflicting implementations of trait `Serialize` for type `SystemSnapshot`
+ --> src/core/analysis.rs:5:17
+  |
+4 | #[derive(Debug, Serialize)]
+  |                 --------- first implementation here
+5 | #[derive(Debug, Serialize)]
+  |                 ^^^^^^^^^ conflicting implementation for `SystemSnapshot`
+  |
+  = note: this error originates in the derive macro `Serialize` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0689]: can't call method `clamp` on ambiguous numeric type `{float}`
+  --> src/commands/doctor.rs:12:50
+   |
+12 | ...snapshot.cpu_usage).clamp(0.0, 100.0);
+   |                        ^^^^^
+
+error[E0689]: can't call method `clamp` on ambiguous numeric type `{float}`
+  --> src/commands/doctor.rs:13:50
+   |
+13 | ...snapshot.mem_usage).clamp(0.0, 100.0);
+   |                        ^^^^^
+
+error[E0277]: the trait bound `Color: From<Color>` is not satisfied
+   --> src/commands/status.rs:61:70
+    |
+ 61 | ..., usage, bar.color(color));
+    |                 ----- ^^^^^ unsatisfied trait bound
+    |                 |
+    |                 required by a bound introduced by this call
+    |
+    = help: the trait `From<ratatui::style::Color>` is not implemented for `colored::Color`
+help: the following other types implement trait `From<T>`
+   --> /home/feroan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/colored-2.2.0/src/color.rs:202:1
+    |
+202 | impl From<&str> for Color {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^ `colored::Color` implements `From<&str>`
+...
+208 | impl From<String> for Color {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^ `colored::Color` implements `From<std::string::String>`
+    = note: required for `ratatui::style::Color` to implement `Into<colored::Color>`
+note: required by a bound in `color`
+   --> /home/feroan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/colored-2.2.0/src/lib.rs:274:17
+    |
+274 |     fn color<S: Into<Color>>(self, color: S) ->...
+    |                 ^^^^^^^^^^^ required by this bound in `Colorize::color`
+    = note: the full name for the type has been written to '/home/feroan/Projects/theMachine/machine/target/debug/deps/machine-10597c9b12b8af21.long-type-11645534988768180541.txt'
+    = note: consider using `--verbose` to print the full type name to the console
+
+Some errors have detailed explanations: E0119, E0252, E0277, E0425, E0432, E0583, E0689.
+For more information about an error, try `rustc --explain E0119`.
+warning: `machine` (lib) generated 5 warnings
+error: could not compile `machine` (lib) due to 25 previous errors; 5 warnings emitted

@@ -1,0 +1,27 @@
+pub mod status;
+pub mod wtf;
+pub mod explain;
+pub mod trace;
+pub mod watch;
+pub mod investigate;
+pub mod doctor;
+pub mod boot;
+pub mod net;
+pub mod clean;
+pub mod history;
+pub mod compare;
+pub mod process;
+pub mod disk;
+pub mod memory;
+pub mod snapshot;
+pub mod diff;
+pub mod forecast;
+pub mod anomalies;
+pub mod services;
+pub mod security;
+pub mod ports;
+pub mod latency;
+pub mod battery;
+pub mod thermal;
+pub mod report;
+
