@@ -1,20 +1,68 @@
 use anyhow::Result;
+use crate::storage::db::StorageManager;
+use crate::core::analysis::SystemSnapshot;
 use colored::*;
 
 pub async fn run(resource: Option<String>) -> Result<()> {
     println!("\n{}", " RESOURCE FORECAST ".on_blue().black().bold());
     println!("Analyzing historical trends to forecast resource usage...\n");
 
+    let storage = StorageManager::new().await?;
+    let snapshots_data = storage.list_snapshots(50).await?;
+    
+    if snapshots_data.len() < 2 {
+        println!("{}", "Insufficient data for forecasting. Please run 'machine snapshot' periodically.".yellow());
+        return Ok(());
+    }
+
+    let mut snapshots = Vec::new();
+    for (id, _) in snapshots_data {
+        if let Some(data) = storage.get_snapshot(&id).await? {
+            if let Ok(snap) = serde_json::from_str::<SystemSnapshot>(&data) {
+                snapshots.push(snap);
+            }
+        }
+    }
+
+    // Sort by timestamp (list_snapshots returns DESC, so we reverse)
+    snapshots.reverse();
+
     match resource.as_deref() {
-        Some("cpu") => println!("CPU usage has been stable. No immediate concerns."),
-        Some("memory") => println!("Memory usage is trending upward (2% per day). Estimation: 90% in 12 days."),
-        Some("disk") => println!("Disk growth is linear. Exhaustion expected in 45 days."),
+        Some("cpu") => predict_resource("CPU", &snapshots, |s| s.cpu_usage, "%"),
+        Some("memory") => predict_resource("Memory", &snapshots, |s| s.mem_usage, "%"),
+        Some("disk") => {
+            println!("Disk forecasting requires additional disk-specific snapshots (comming soon).");
+        },
         _ => {
-            println!("{:<15} stable (Forecasting not enough data)", "CPU:".bold());
-            println!("{:<15} +2% / day (Predicted 90% in 12 days)", "Memory:".bold());
-            println!("{:<15} +0.5GB / day (Predicted 100% in 45 days)", "Disk:".bold());
+            predict_resource("CPU", &snapshots, |s| s.cpu_usage, "%");
+            predict_resource("Memory", &snapshots, |s| s.mem_usage, "%");
         }
     }
 
     Ok(())
+}
+
+fn predict_resource<F>(label: &str, snapshots: &[SystemSnapshot], accessor: F, unit: &str) 
+where F: Fn(&SystemSnapshot) -> f32 {
+    let first = accessor(&snapshots[0]);
+    let last = accessor(&snapshots.last().unwrap());
+    let diff = last - first;
+    let avg_change = diff / (snapshots.len() as f32);
+
+    let trend = if avg_change > 1.0 {
+        format!("trending upward ({:+.1}{}/sample)", avg_change, unit).red()
+    } else if avg_change < -1.0 {
+        format!("trending downward ({:+.1}{}/sample)", avg_change, unit).green()
+    } else {
+        format!("stable ({:+.1}{}/sample)", avg_change, unit).bright_black()
+    };
+
+    println!("{:<15} {}", format!("{}:", label).bold(), trend);
+    
+    if avg_change > 0.0 && last < 100.0 {
+        let samples_to_100 = (100.0 - last) / avg_change;
+        if samples_to_100 < 100.0 {
+            println!("  {} Threshold (100%) expected in ~{:.0} more snapshots.", "CRITICAL:".red(), samples_to_100);
+        }
+    }
 }
