@@ -3,7 +3,7 @@ use crate::core::analysis::Analyzer;
 use colored::*;
 use tokio::time::{sleep, Duration};
 
-pub async fn run() -> Result<()> {
+pub async fn run(_json: bool, _verbose: bool) -> Result<()> {
     let mut analyzer = Analyzer::new();
     let mut last_cpu = 0.0;
 

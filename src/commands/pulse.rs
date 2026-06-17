@@ -2,10 +2,15 @@ use anyhow::Result;
 use crate::core::analysis::Analyzer;
 use colored::*;
 
-pub async fn run() -> Result<()> {
+pub async fn run(json: bool, _verbose: bool) -> Result<()> {
     let mut analyzer = Analyzer::new();
     let snapshot = analyzer.get_snapshot();
     
+    if json {
+        println!("{}", serde_json::to_string_pretty(&snapshot)?);
+        return Ok(());
+    }
+
     // Single-screen compact view
     println!("\n{} {}", "MACHINE PULSE:".bold(), "System Heartbeat".dimmed());
     

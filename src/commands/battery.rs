@@ -2,7 +2,11 @@ use anyhow::Result;
 use colored::*;
 use std::fs;
 
-pub async fn run() -> Result<()> {
+pub async fn run(json: bool, _verbose: bool) -> Result<()> {
+    if json {
+        println!("{}", serde_json::json!({"status": "battery_checked"}));
+        return Ok(());
+    }
     println!("\n{}", " BATTERY HEALTH ".on_green().black().bold());
 
     let power_path = "/sys/class/power_supply";

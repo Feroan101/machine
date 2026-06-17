@@ -3,7 +3,7 @@ use crate::core::analysis::SystemSnapshot;
 use crate::storage::db::StorageManager;
 use colored::*;
 
-pub async fn run(id1: String, id2: String) -> Result<()> {
+pub async fn run(id1: String, id2: String, _json: bool, _verbose: bool) -> Result<()> {
     let storage = StorageManager::new().await?;
     
     let data1 = storage.get_snapshot(&id1).await?.context(format!("Snapshot {} not found", id1))?;

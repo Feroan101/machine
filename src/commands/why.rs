@@ -3,7 +3,7 @@ use crate::core::analysis::Analyzer;
 use crate::core::proc::{get_process_by_target, get_ancestry};
 use colored::*;
 
-pub async fn run(target: String, json: bool) -> Result<()> {
+pub async fn run(target: String, json: bool, _verbose: bool) -> Result<()> {
     let analyzer = Analyzer::new();
     let process = get_process_by_target(&analyzer.sys, &target)
         .ok_or_else(|| anyhow!("Could not find process matching '{}'", target))?;

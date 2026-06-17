@@ -3,7 +3,7 @@ use crate::storage::db::StorageManager;
 use crate::core::analysis::{Analyzer, SystemSnapshot};
 use colored::*;
 
-pub async fn run() -> Result<()> {
+pub async fn run(json: bool, _verbose: bool) -> Result<()> {
     println!("\n{}", " ANOMALY DETECTION ".on_yellow().black().bold());
     println!("Scanning for unusual system activity compared to history...\n");
 
@@ -14,6 +14,10 @@ pub async fn run() -> Result<()> {
     let snapshots_data = storage.list_snapshots(30).await?;
     
     if snapshots_data.is_empty() {
+        if json {
+            println!("{}", serde_json::json!({"status": "no_history", "current": current}));
+            return Ok(());
+        }
         println!("{}", "No historical data found. Analyzing current state only...".bright_black());
         check_anomalies_local(&current);
         return Ok(());
@@ -31,20 +35,30 @@ pub async fn run() -> Result<()> {
     let avg_cpu: f32 = history.iter().map(|s| s.cpu_usage).sum::<f32>() / history.len() as f32;
     let avg_mem: f32 = history.iter().map(|s| s.mem_usage).sum::<f32>() / history.len() as f32;
 
-    let mut found = false;
-
+    let mut anomalies = Vec::new();
     if current.cpu_usage > avg_cpu + 20.0 {
-        println!("{} Significant CPU spike detected ({:.1}% vs avg {:.1}%)", "ANOMALY:".red().bold(), current.cpu_usage, avg_cpu);
-        found = true;
+        anomalies.push(format!("Significant CPU spike detected ({:.1}% vs avg {:.1}%)", current.cpu_usage, avg_cpu));
     }
-
     if current.mem_usage > avg_mem + 15.0 {
-        println!("{} Memory usage is unusually high ({:.1}% vs avg {:.1}%)", "ANOMALY:".red().bold(), current.mem_usage, avg_mem);
-        found = true;
+        anomalies.push(format!("Memory usage is unusually high ({:.1}% vs avg {:.1}%)", current.mem_usage, avg_mem));
     }
 
-    if !found {
+    if json {
+        let result = serde_json::json!({
+            "anomalies": anomalies,
+            "averages": {"cpu": avg_cpu, "memory": avg_mem},
+            "current": {"cpu": current.cpu_usage, "memory": current.mem_usage}
+        });
+        println!("{}", serde_json::to_string_pretty(&result)?);
+        return Ok(());
+    }
+
+    if anomalies.is_empty() {
         println!("{} No major anomalies detected compared to historical data.", "OK:".green().bold());
+    } else {
+        for a in anomalies {
+            println!("{} {}", "ANOMALY:".red().bold(), a);
+        }
     }
 
     Ok(())

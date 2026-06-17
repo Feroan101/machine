@@ -5,7 +5,7 @@ use colored::*;
 use std::process::Command;
 use sysinfo::Disks;
 
-pub async fn run(verbose: bool, json: bool) -> Result<()> {
+pub async fn run(json: bool, verbose: bool) -> Result<()> {
     let mut analyzer = Analyzer::new();
     let snapshot = analyzer.get_snapshot();
     

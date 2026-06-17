@@ -3,12 +3,9 @@ use crate::core::analysis::Analyzer;
 use colored::*;
 use sysinfo::Disks;
 
-pub async fn run() -> Result<()> {
+pub async fn run(json: bool, _verbose: bool) -> Result<()> {
     let mut analyzer = Analyzer::new();
     let snapshot = analyzer.get_snapshot();
-
-    println!("\n{}", " MACHINE DOCTOR ".on_green().black().bold());
-    println!("Checking system health score...\n");
 
     let cpu_score = (100.0f32 - snapshot.cpu_usage).clamp(0.0f32, 100.0f32);
     let mem_score = (100.0f32 - snapshot.mem_usage).clamp(0.0f32, 100.0f32);
@@ -26,6 +23,20 @@ pub async fn run() -> Result<()> {
     }
 
     let health_score = (cpu_score + mem_score + disk_score) / 3.0;
+
+    if json {
+        let result = serde_json::json!({
+            "cpu_health": cpu_score,
+            "memory_health": mem_score,
+            "storage_health": disk_score,
+            "final_score": health_score
+        });
+        println!("{}", serde_json::to_string_pretty(&result)?);
+        return Ok(());
+    }
+
+    println!("\n{}", " MACHINE DOCTOR ".on_green().black().bold());
+    println!("Checking system health score...\n");
 
     println!("{:<15} {:.1}/100", "CPU Health:".bold(), cpu_score);
     println!("{:<15} {:.1}/100", "Memory Health:".bold(), mem_score);
@@ -45,10 +56,10 @@ pub async fn run() -> Result<()> {
     if health_score < 80.0 {
         println!("\n{}", "PROPOSED ACTIONS:".bold());
         if cpu_score < 70.0 {
-            println!("  • Identify and terminate high CPU consumers using '{}'", "machine top".bold());
+            println!("  • Identify and terminate high CPU consumers using '{}'", "machine process top".bold());
         }
         if mem_score < 70.0 {
-            println!("  • Clear RAM by closing unused browser tabs or using '{}'", "machine clean --mem".bold());
+            println!("  • Clear RAM by closing unused browser tabs or using '{}'", "machine clean".bold());
         }
         if disk_score < 70.0 {
             println!("  • Free up disk space by running '{}'", "machine clean".bold());

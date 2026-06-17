@@ -2,9 +2,14 @@ use anyhow::Result;
 use crate::storage::db::StorageManager;
 use colored::*;
 
-pub async fn run() -> Result<()> {
+pub async fn run(json: bool, _verbose: bool) -> Result<()> {
     let storage = StorageManager::new().await?;
     let snapshots = storage.list_snapshots(20).await?;
+
+    if json {
+        println!("{}", serde_json::to_string_pretty(&snapshots)?);
+        return Ok(());
+    }
 
     println!("\n{}", " SYSTEM HISTORY ".on_blue().black().bold());
     

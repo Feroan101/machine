@@ -4,7 +4,7 @@ use crate::storage::db::StorageManager;
 use chrono::Local;
 use colored::*;
 
-pub async fn run() -> Result<()> {
+pub async fn run(_json: bool, _verbose: bool) -> Result<()> {
     let mut analyzer = Analyzer::new();
     let snapshot = analyzer.get_snapshot();
     let storage = StorageManager::new().await?;

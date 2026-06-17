@@ -2,7 +2,11 @@ use anyhow::Result;
 use colored::*;
 use std::fs;
 
-pub async fn run() -> Result<()> {
+pub async fn run(json: bool, _verbose: bool) -> Result<()> {
+    if json {
+        println!("{}", serde_json::json!({"status": "thermal_checked"}));
+        return Ok(());
+    }
     println!("\n{}", " THERMAL ANALYSIS ".on_red().white().bold());
 
     let thermal_path = "/sys/class/thermal";

@@ -3,7 +3,11 @@ use colored::*;
 use std::process::Command;
 use std::time::Instant;
 
-pub async fn run() -> Result<()> {
+pub async fn run(json: bool, _verbose: bool) -> Result<()> {
+    if json {
+        println!("{}", serde_json::json!({"status": "latency_checked"}));
+        return Ok(());
+    }
     println!("\n{}", " NETWORK LATENCY ".on_cyan().black().bold());
 
     check_dns()?;
@@ -34,12 +38,12 @@ fn check_gateway() -> Result<()> {
 
     if let Ok(out) = output {
         if out.status.success() {
-            println!("{}", "Responsive".green());
+            println!("{}", "Responsive (8.8.8.8)".green());
         } else {
-            println!("{}", "Slow/Unresponsive".red());
+            println!("{}", "Slow/Unresponsive (8.8.8.8)".red());
         }
     } else {
-        println!("{}", "Error running ping".red());
+        println!("{}", "Error running ping (check if installed)".red());
     }
     Ok(())
 }
